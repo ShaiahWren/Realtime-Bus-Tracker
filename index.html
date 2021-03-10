@@ -55,16 +55,24 @@ const busStops = [
 async function run(){
     // get bus data    
 	let route = await getBusLocations();
+    removeMarkers()
 	console.log(new Date());
-	console.log(locations);
+	console.log(busStops);
     routeData(route)
 	// timer
 	setTimeout(run, 15000);
 }
+function removeMarkers(){
+    if(markers){
+      markers.forEach(marker => {
+        marker.remove();
+      })
+    }
+  }
 
 function routeData(route) {
-    route.forEach(vehicle => {
-        marker.push(new mapboxgl.Marker())
+    route.forEach((vehicle) => {
+        markers.push(new mapboxgl.Marker())
         .setLngLat([vehicle.attributes.longitude, vehicle.attributes.latitude])
         .addTo(map);
     })

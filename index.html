@@ -70,13 +70,13 @@ function removeMarkers(){
     }
   }
 
-function routeData(route) {
-    route.forEach((vehicle) => {
-        markers.push(new mapboxgl.Marker())
-        .setLngLat([vehicle.attributes.longitude, vehicle.attributes.latitude])
-        .addTo(map);
-    })
-}
+  function routeData(route){
+    route.forEach(vehicle => {
+      markers.push(new mapboxgl.Marker()
+      .setLngLat([vehicle.attributes.longitude, vehicle.attributes.latitude])
+      .addTo(map));
+    });
+  }
 
 // Request bus data from MBTA
 async function getBusLocations(){
